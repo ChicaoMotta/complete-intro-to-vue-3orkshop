@@ -9,34 +9,41 @@
 </head>
 
 <body>
-  <h1>Ta rolando</h1>
 
   <div id="app">
-    <h1>{{ message }}</h1>
 
-    <p v-if="message.length % 2 === 0">
-      Even: {{message}}
-    </p>
-    <p v-else>
-      Odd: {{message}}
-    </p>
+    <p>{{count}}</p>
+    <button v-on:click="incrementCount">Increment</button>
 
-    <ul>
-      <li v-for="numbers in listOfNumbers">
-        {{numbers}}
-      </li>
-    </ul>
+    <hr>
+    <!-- 
+    <div>
+      <h1>{{ message }}</h1>
 
-    <ul>
-      <li v-for="item in complexList">
-        {{item.id}}
-        <ul>
-          <li v-for="numbers in item.list">
-            {{numbers}}
-          </li>
-        </ul>
-      </li>
-    </ul>
+      <p v-if="message.length % 2 === 0">
+        Even: {{message}}
+      </p>
+      <p v-else>
+        Odd: {{message}}
+      </p>
+
+      <ul>
+        <li v-for="numbers in listOfNumbers">
+          {{numbers}}
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="item in complexList">
+          {{item.id}}
+          <ul>
+            <li v-for="numbers in item.list">
+              {{numbers}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div> -->
   </div>
 </body>
 
@@ -46,25 +53,33 @@
   const { createApp } = Vue
 
   const app = createApp({
-    data() {
-      return {
-        message: 'Hello world', listOfNumbers: [1, 2, 3, 4, 5],
-        complexList: [
-          {
-            id: 1,
-            list: [1, 2, 3, 4]
-          },
-          {
-            id: 2,
-            list: [1, 2, 3, 4]
-          }, {
-            id: 3,
-            list: [1, 2, 3, 4]
-          }, {
-            id: 4,
-            list: [1, 2, 3, 4],
-          }
-        ]
+    // data() {
+    //   return {
+    //     message: 'Hello world', listOfNumbers: [1, 2, 3, 4, 5],
+    //     complexList: [
+    //       {
+    //         id: 1,
+    //         list: [1, 2, 3, 4]
+    //       },
+    //       {
+    //         id: 2,
+    //         list: [1, 2, 3, 4]
+    //       }, {
+    //         id: 3,
+    //         list: [1, 2, 3, 4]
+    //       }, {
+    //         id: 4,
+    //         list: [1, 2, 3, 4],
+    //       }
+    //     ]
+    //   }
+    // }
+    data: () => ({
+      count: 10
+    }),
+    methods: {
+      incrementCount() {
+        this.count++
       }
     }
   })
