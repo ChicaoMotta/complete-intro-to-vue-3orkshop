@@ -14,7 +14,8 @@
 
     <p>{{count}}</p>
     <button v-on:click="incrementCount">Increment</button>
-
+    <!-- <input type="number" v-bind:value="incrementAmount" v-on:input="changeInputAmout"> -->
+    <input type="number" v-model="incrementAmount">
     <hr>
     <!-- 
     <div>
@@ -75,11 +76,15 @@
     //   }
     // }
     data: () => ({
-      count: 10
+      count: 10,
+      incrementAmount: 2,
     }),
     methods: {
       incrementCount() {
-        this.count++
+        this.count += this.incrementAmount
+      },
+      changeInputAmout({ target: { value } }) {
+        this.incrementAmount = +value
       }
     }
   })
